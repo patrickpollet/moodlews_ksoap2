@@ -2,11 +2,10 @@ package net.patrickpollet.moodlews;
 
 import java.util.Arrays;
 
-import net.patrickpollet.moodlews.core.CourseRecord;
-import net.patrickpollet.moodlews.core.LoginReturn;
-import net.patrickpollet.moodlews.core.Mdl_soapserverBindingStub;
-import net.patrickpollet.moodlews.core.RoleRecord;
-import net.patrickpollet.moodlews.core.UserRecord;
+//use the new WSDL 
+import net.patrickpollet.moodlews.core.*;
+// definitions of Moodle server, login, password ...
+
 
 public class Test1 {
 	// WE now use the simplified WSDL that is now generated from the server's
@@ -18,16 +17,11 @@ public class Test1 {
 	// and in the case of returned arrays there is no need to extract first a
 	// property xxxReturn
 	// the array is right now available
-	// TESTING adjust to your site
-	private static final String MOODLE_URL = "http://localhost/moodle.195/";
-	private static final String LOGIN = "astrid";
-	private static final String PWD = "bpitt1";
-	private static final boolean WS_DEBUG = false;
-	// END TESTING
+	
 	
 	//DO NOT CHANGE we are talking to Ws using the NEW simplified WSDL
-	private static final String MOODLE_SERVICE=MOODLE_URL+"wspp/service_pp2.php";
-	private static final String MOODLE_NAMESPACE=MOODLE_URL+"wspp/wsdl2/";
+	private static final String MOODLE_SERVICE=Constantes.MOODLE_URL+"wspp/service_pp2.php";
+	private static final String MOODLE_NAMESPACE=Constantes.MOODLE_URL+"wspp/wsdl2/";
 
 
 
@@ -37,8 +31,8 @@ public class Test1 {
 
 	public Test1() throws Exception {
 
-		Mdl_soapserverBindingStub moodle = new Mdl_soapserverBindingStub(MOODLE_SERVICE,MOODLE_NAMESPACE, WS_DEBUG);
-		LoginReturn lr = moodle.login(LOGIN, PWD);
+		Mdl_soapserverBindingStub moodle = new Mdl_soapserverBindingStub(MOODLE_SERVICE,MOODLE_NAMESPACE, Constantes.WS_DEBUG);
+		LoginReturn lr = moodle.login(Constantes.LOGIN, Constantes.PWD);
 
 		// moodle.get_my_id(client, sesskey);
 		if (lr != null) {
@@ -46,10 +40,8 @@ public class Test1 {
 			System.out.println("me " + me);
 			CourseRecord[] ret = moodle.get_my_courses(lr.getClient(), lr
 					.getSessionkey(), "" + me, null);
-			/*
-			 * get forums of the first course
-			 */
-			if (ret != null) {// System.out.println(Arrays.toString(ret));
+		
+			if (ret != null) {
 				System.out.println(Arrays.toString(ret));
 				String[] coursesIds = new String[ret.length];
 				
@@ -67,20 +59,16 @@ public class Test1 {
 				for (CourseRecord c : bis)
 					System.out.println(c);
 
-				/*
-				 * if (ret.length > 0) { CourseRecord firstCourse = ret[0];
-				 * ResourceRecord[]
-				 * forums=moodle.getCourseActivityByType(lr,firstCourse.getId(),
-				 * "forum");
-				 * 
-				 * }
-				 * 
-				 * // get forums of all my courses for (int i = 0; i <
-				 * ret.size(); i++) { CourseRecord course = ret.get(i);
-				 * List<ResourceRecord>
-				 * forums=moodle.getCourseActivityByType(lr, course.getId(),
-				 * "assignment"); if (i>2) break; }
-				 */
+				
+				 // get forums of some of my courses 
+				 for (int i = 0; i < ret.length; i++) {
+					 CourseRecord course = ret[i];
+				    ResourceRecord[] forums=moodle.get_instances_bytype(lr.getClient(),
+				    		 lr.getSessionkey(),new String[]{""+course.getId()},"id", "forum");
+				    System.out.println(Arrays.toString(forums));
+				    if (i>2) break;
+				  }
+				 
 				RoleRecord[] roles = moodle.get_roles(lr.getClient(), lr
 						.getSessionkey(), null, null);
 				System.out.println(Arrays.toString(roles));
@@ -98,13 +86,20 @@ public class Test1 {
 				for (int i=0; i<thems.length;i++)
 					System.out.println(i+" "+thems[i]);
 
-				/*
-				 * String[] userids={"ppollet","pguy","astrid","inconnu"};
-				 * UserRecord[]thems=
-				 * moodle.get_users(lr.getClient(),lr.getSessionkey(),
-				 * userids,"username");
-				 * System.out.println(Arrays.toString(thems));
-				 */
+			
+				// create a new user 
+				UserDatum newU=new UserDatum(moodle.getNAMESPACE());
+				newU.setUsername("inconnu005");
+				newU.setFirstname("inconnu");
+				newU.setLastname("inconnu");
+				newU.setEmail("inconnu005@patrickpollet.net");
+				newU.setIdnumber("inconnu005");
+				newU.setPassword("inconnu");
+				System.out.println(newU);
+				
+				UserRecord[] res=moodle.add_user(lr.getClient(),lr.getSessionkey(),newU);
+				System.out.println (Arrays.toString(res));
+				
 				moodle.logout(lr.getClient(),lr.getSessionkey());
 			} else
 				System.out.println("echec");

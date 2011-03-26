@@ -2,14 +2,10 @@ package net.patrickpollet.moodlewsold;
 
 import java.util.Arrays;
 
-import net.patrickpollet.moodlewsold.core.GetRolesReturn;
-import net.patrickpollet.moodlewsold.core.GetUsersReturn;
-import net.patrickpollet.moodlewsold.core.LoginReturn;
-import net.patrickpollet.moodlewsold.core.MoodleWSBindingStub;
-import net.patrickpollet.moodlewsold.core.UserDatum;
-import net.patrickpollet.moodlewsold.core.UserRecord;
-
-
+//use the old WSDL 
+import net.patrickpollet.moodlewsold.core.*;
+// definitions of Moodle server, login, password ...
+import net.patrickpollet.moodlews.Constantes;
 
 
 public class Test1 {
@@ -22,16 +18,10 @@ public class Test1 {
 	// and in the case of returned arrays there is no need to extract first a
 	// property xxxReturn
 	// the array is right now available
-	// TESTING adjust to your site
-	private static final String MOODLE_URL = "http://prope.insa-lyon.fr/moodle.195/";
-	
-	private static final String LOGIN = "astrid";
-	private static final String PWD = "bpitt1";
-	private static final boolean WS_DEBUG = false;
-	// END TESTING
+
 	//DO NOT CHANGE we are talking to Ws using the old WSDL
-	private static final String MOODLE_SERVICE=MOODLE_URL+"wspp/service_pp.php";
-	private static final String MOODLE_NAMESPACE=MOODLE_URL+"wspp/wsdl/";
+	private static final String MOODLE_SERVICE=Constantes.MOODLE_URL+"wspp/service_pp.php";
+	private static final String MOODLE_NAMESPACE=Constantes.MOODLE_URL+"wspp/wsdl/";
 	
 	public static void main (String args[]) throws Exception {
 		new Test1();
@@ -39,36 +29,34 @@ public class Test1 {
 	
 	public Test1 () throws Exception{
 		
-		MoodleWSBindingStub moodle=new MoodleWSBindingStub(MOODLE_SERVICE,MOODLE_NAMESPACE,WS_DEBUG);
+		MoodleWSBindingStub moodle=new MoodleWSBindingStub(MOODLE_SERVICE,MOODLE_NAMESPACE,Constantes.WS_DEBUG);
 		
-		LoginReturn lr = moodle.login(LOGIN, PWD);
+		LoginReturn lr = moodle.login(Constantes.LOGIN, Constantes.PWD);
 		
-		//moodle.get_my_id(client, sesskey);
+
 		if (lr != null) {
-			/**
-			int me =0; // moodle.get_my_id(lr.getClient(),lr.getSessionkey());
+		
+			int me =moodle.get_my_id(lr.getClient(),lr.getSessionkey());
 			System.out.println ("me "+me);
-			CourseRecord []ret = moodle.get_my_courses(lr.getClient(),lr.getSessionkey(), ""+me,null);
+			CourseRecord []ret = moodle.get_my_courses(lr.getClient(),lr.getSessionkey(), me,null).getCourses();
 			
 			if (ret!=null){// System.out.println(Arrays.toString(ret));
 			System.out.println(ret); //Arrays.toString(ret));
 			for(CourseRecord c : ret)
 				System.out.println(c.getShortname());
 			}
-			if (ret.length > 0) { 
-			 CourseRecord  firstCourse = ret[0]; 
-			 ResourceRecord[] forums=moodle.getCourseActivityByType(lr,firstCourse.getId(), "forum");
-			 
-	     	}	
+			
 			
 			// get forums of all my courses
-			for (int i = 0; i < ret.size(); i++) {
-				CourseRecord course = ret.get(i);
-				List<ResourceRecord> forums=moodle.getCourseActivityByType(lr, course.getId(), "assignment");
+			for (int i = 0; i < ret.length; i++) {
+				CourseRecord course = ret[i];
+				ResourceRecord[] forums=moodle.get_instances_bytype(lr.getClient(),lr.getSessionkey(),
+						new String[]{""+course.getId()}, "id","forum").getResources();
+				 System.out.println(Arrays.toString(forums));
 				if (i>2) break;
 			}
 		
-			*/
+		
 			GetRolesReturn roles=moodle.get_roles(lr.getClient(),lr.getSessionkey());
 			System.out.println (Arrays.toString(roles.getRoles()));
 			
@@ -86,12 +74,13 @@ public class Test1 {
 			System.out.println (Arrays.toString(users));
 			
 			
+			// create a new user 
 			UserDatum newU=new UserDatum(moodle.getNAMESPACE());
-			newU.setUsername("inconnu");
+			newU.setUsername("inconnu004");
 			newU.setFirstname("inconnu");
 			newU.setLastname("inconnu");
-			newU.setEmail("inconnu@patrickpollet.net");
-			newU.setIdnumber("inconnu");
+			newU.setEmail("inconnu004@patrickpollet.net");
+			newU.setIdnumber("inconnu004");
 			newU.setPassword("inconnu");
 			System.out.println(newU);
 			

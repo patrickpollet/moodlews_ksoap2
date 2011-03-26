@@ -1,1 +1,4 @@
+#do not commit the bin directory
 bin/
+#do not commit MY connexion data
+Constantes.java
