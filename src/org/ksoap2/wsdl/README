@@ -1,0 +1,7 @@
+This directory contains a new WSDL2java class helper generated specific to Ksoap2 library.
+The main class WSDL2ksoap extends the Apache Axis 1.4 WSDL2java class and add the needed
+customisations.
+
+Usage is the very same as WDL2java  
+
+PP
