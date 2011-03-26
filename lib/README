@@ -1,0 +1,3 @@
+This directory contains jar files needed by WSDL2Java utility to regenerate helper classes 
+in case of evolution of the OK Tech WS WSDL 
+
