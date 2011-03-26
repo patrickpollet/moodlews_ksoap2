@@ -1,0 +1,13 @@
+/**
+ * this is a very basic android application using my moodlews_ksoap.jar package
+ * and the standard ksoap2-android-assembly-2.5.2-jar-with-dependencies.jar
+
+ * 
+ * you must copy this source code into the main application of a new Android project that has in its classpath
+ * the two jar cited above 
+ * 
+ *  * Nothing is displayed in the emulator screen (except an hello world...) 
+ * all results are logged into the Android log file that can be seen in the DDMS view of Eclipse running Android SDK
+ * 
+ * this version used the old WSDL implementation available in net.patrickpollet.moodlewsold.core.* 
+ */
