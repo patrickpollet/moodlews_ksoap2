@@ -1,0 +1,10 @@
+package net.patrickpollet.moodlews;
+public class Constantes {
+	// TESTING adjust to your site
+	public static final String MOODLE_URL = "http://localhost/moodle.195/";
+	public  static final String LOGIN = "somemoodleuserwithgood capabilities";
+	public static final String PWD = "itspassword";
+	public static final boolean WS_DEBUG = false;
+	// END TESTING
+
+}
