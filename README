@@ -67,11 +67,11 @@ Usage of the new version i.e. classes in net.patrickpollet.moodlews is now recom
 -----------------------------------------------
 javadoc for the supported operations is online for the olwd WSDL here :
 
-http://prope.insa-lyon.fr/~ppollet/moodlews/java/javadoc/fr/insa_lyon/prope/moodle_195/wspp/wsdl/MoodleWSBindingStub.html
+http://prope.insa-lyon.fr/~ppollet/moodlews/java/ksoap2/moodlewsold/net/patrickpollet/moodlewsold/core/MoodleWSBindingStub.html
 
 and for the new one here :
 
-http://prope.insa-lyon.fr/~ppollet/moodlews/java/javadoc2/localhost/moodle20/wspp/wsdl2/Mdl_soapserverBindingStub.html
+http://prope.insa-lyon.fr/~ppollet/moodlews/java/ksoap2/moodlewsold/net/patrickpollet/moodlews/core/Mdl_soapserverBindingStub.html
  
 5) Updating the helper classes :
 ---------------------------------
