@@ -10,55 +10,68 @@ package net.patrickpollet.moodleandroid;
  * 
  *  * Nothing is displayed in the emulator screen (except an hello world...) 
  * all results are logged into the Android log file that can be seen in the DDMS view of Eclipse running Android SDK
- * 
- * this version use the old WSDL implementation available in net.patrickpollet.moodlewsold.core.* 
+
+ * this version use the NEW WSDL implementation available in net.patrickpollet.moodlews.core.* 
  */
 
 
 
+
+import java.util.Arrays;
+
+import net.patrickpollet.moodlews.core.CourseRecord;
+import net.patrickpollet.moodlews.core.LoginReturn;
+import net.patrickpollet.moodlews.core.Mdl_soapserverBindingStub;
+import net.patrickpollet.moodlews.core.UserRecord;
+
 import org.ksoap2.transport.HttpTransportSE;
-
-
-import net.patrickpollet.moodlewsold.core.CourseRecord;
-import net.patrickpollet.moodlewsold.core.GetCoursesReturn;
-import net.patrickpollet.moodlewsold.core.LoginReturn;
-import net.patrickpollet.moodlewsold.core.MoodleWSBindingStub;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
-public class moodleandroid extends Activity {
+public class moodleandroid2 extends Activity {
 	/** Called when the activity is first created. */
 	// the array is right now available
 	// TESTING adjust to your site
 	// do not use http://localhost/ if running under emulator ( connexion refused !) 
-	private final String MOODLE_URL = "http://yourmoodle/";
-	private final String LOGIN = "zzzzzzz";
-	private final String PWD = "zzzzzz";
-	private final boolean WS_DEBUG = false;
+	private final String MOODLE_URL = "http://mymoodle/";
+	private final String LOGIN = "zzzzzz";
+	private final String PWD = "zzzzz";
+	private final boolean WS_DEBUG = true;
 	// END TESTING
 
 	// we use the simplified wsdl version
-	private final String NAMESPACE = MOODLE_URL + "wspp/wsdl/";
+	private final String NAMESPACE = MOODLE_URL + "wspp/wsdl2/";
 	private final String TAG = "moodlews@android";
-	private final String URL = MOODLE_URL + "/wspp/service_pp.php";
+	private final String URL = MOODLE_URL + "/wspp/service_pp2.php";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		// nothing is printed onscreen see DDMS Log
-		MoodleWSBindingStub moodle=new MoodleWSBindingStub(this.URL,this.NAMESPACE,this.WS_DEBUG);
+		Mdl_soapserverBindingStub moodle = new Mdl_soapserverBindingStub(URL,NAMESPACE,WS_DEBUG);
 		
 			LoginReturn lr = moodle.login(LOGIN, PWD);
 			if (lr != null) {
 				int me = moodle.get_my_id(lr.getClient(),lr.getSessionkey());
 				this.logInfo("get_my_id",""+me);
 				
-				GetCoursesReturn crs=moodle.get_my_courses(lr.getClient(),lr.getSessionkey(),me,"");
-				for (CourseRecord c : crs.getCourses())
-					this.logInfo("get_my_courses",c);			
+		
+				CourseRecord[] crs = moodle.get_my_courses(lr.getClient(),lr.getSessionkey(),""+me,"");
+				
+				for (CourseRecord c : crs)
+					this.logInfo("get_my_courses",c);
+				
+				String[] userids = { "ppollet", "pguy", "astrid", "inconnu" };
+				UserRecord[] thems = moodle.get_users(lr.getClient(), lr
+						.getSessionkey(), userids, "username");
+				System.out.println(Arrays.toString(thems));
+				for (UserRecord u : thems)
+					System.out.println(u);
+				
+				
 				moodle.logout(lr.getClient(),lr.getSessionkey());
 			}
 		}

@@ -40,8 +40,8 @@ public class KSoap2BindingStubBase{
 	protected  boolean WS_DEBUG = true;
 	
 	public KSoap2BindingStubBase (String service_url, String nameSpace,boolean debug) {
-		this.NAMESPACE=nameSpace; //moodle_url+ "wspp/wsdl2/";
-		this.URL=service_url; //+"wspp/service_pp2.php";
+		this.NAMESPACE=nameSpace;
+		this.URL=service_url; 
 		this.WS_DEBUG=debug;
 	}
 	
@@ -81,12 +81,16 @@ public class KSoap2BindingStubBase{
 	protected void logError(HttpTransportSE httpTransport, Exception e) {
 		// give a null pointer exception if debug is off in transport
 		if (WS_DEBUG) {
-			System.out.println( httpTransport.requestDump.toString());
-			System.out.println(  "lng="
+			if (httpTransport.requestDump !=null) {		
+				System.out.println( httpTransport.requestDump.toString());
+				System.out.println(  "lng="
 					+ (httpTransport.requestDump.toString().length()));
-			System.out.println( httpTransport.responseDump.toString());
-			System.out.println( "lng="
+			}
+			if (httpTransport.responseDump !=null) {
+				System.out.println( httpTransport.responseDump.toString());
+				System.out.println( "lng="
 					+ (httpTransport.responseDump.toString().length()));
+			}
 		}
 		e.printStackTrace();
 
