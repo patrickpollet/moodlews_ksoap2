@@ -71,7 +71,7 @@ http://prope.insa-lyon.fr/~ppollet/moodlews/java/ksoap2/moodlewsold/net/patrickp
 
 and for the new one here :
 
-http://prope.insa-lyon.fr/~ppollet/moodlews/java/ksoap2/moodlewsold/net/patrickpollet/moodlews/core/Mdl_soapserverBindingStub.html
+http://prope.insa-lyon.fr/~ppollet/moodlews/java/ksoap2/moodlews/net/patrickpollet/moodlews/core/Mdl_soapserverBindingStub.html
  
 5) Updating the helper classes :
 ---------------------------------
