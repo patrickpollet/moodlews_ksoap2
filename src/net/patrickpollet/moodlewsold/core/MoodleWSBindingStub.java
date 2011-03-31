@@ -17,7 +17,7 @@ import org.ksoap2.transport.HttpTransportSE;
 import net.patrickpollet.ksoap2.*;
 
 public class MoodleWSBindingStub extends  KSoap2BindingStubBase{
-    public MoodleWSBindingStub(String service_url, String nameSpace,boolean debug) {
+    public MoodleWSBindingStub(String service_url, String nameSpace, boolean debug) {
          super(service_url,nameSpace,debug);
      }
 
@@ -2728,6 +2728,25 @@ public class MoodleWSBindingStub extends  KSoap2BindingStubBase{
       SoapObject response = (SoapObject) resultsRequestSOAP.getProperty(0);
 	  this.logInfo(METH_NAME, response);
       return (AffectRecord)KSoap2Utils.getObject(response,new AffectRecord(this.NAMESPACE));
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return null;
+        }
+   }
+    public net.patrickpollet.moodlewsold.core.GetMessageContactsReturn get_message_contacts(int client, java.lang.String sesskey, java.lang.String userid, java.lang.String useridfield)  {
+    final String METH_NAME = "get_message_contacts";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+      envelope.addProperty("client",client);
+      envelope.addProperty("sesskey",sesskey);
+      envelope.addProperty("userid",userid);
+      envelope.addProperty("useridfield",useridfield);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     SoapObject resultsRequestSOAP = (SoapObject) envelope.bodyIn;
+      SoapObject response = (SoapObject) resultsRequestSOAP.getProperty(0);
+	  this.logInfo(METH_NAME, response);
+      return (GetMessageContactsReturn)KSoap2Utils.getObject(response,new GetMessageContactsReturn(this.NAMESPACE));
     } catch (Exception e) {
              this.logError(httpTransport, e);
            return null;

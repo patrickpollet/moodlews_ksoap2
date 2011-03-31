@@ -17,7 +17,7 @@ import org.ksoap2.transport.HttpTransportSE;
 import net.patrickpollet.ksoap2.*;
 
 public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
-    public Mdl_soapserverBindingStub(String service_url, String nameSpace,boolean debug) {
+    public Mdl_soapserverBindingStub(String service_url, String nameSpace, boolean debug) {
          super(service_url,nameSpace,debug);
      }
 
@@ -1952,6 +1952,26 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
+    public net.patrickpollet.moodlews.core.ContactRecord[] get_message_contacts(int client, java.lang.String sesskey, java.lang.String userid, java.lang.String useridfield)  {
+    final String METH_NAME = "get_message_contacts";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+      envelope.addProperty("client",client);
+      envelope.addProperty("sesskey",sesskey);
+      envelope.addProperty("userid",userid);
+      envelope.addProperty("useridfield",useridfield);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     SoapObject resultsRequestSOAP = (SoapObject) envelope.bodyIn;
+      SoapObject response = (SoapObject) resultsRequestSOAP.getProperty(0);
+	  this.logInfo(METH_NAME, response);
+      List ret=this.getList(response,new ContactRecord(this.NAMESPACE));
+      return (ContactRecord[]) ret.toArray( new ContactRecord[0]);
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return null;
+        }
+   }
     public net.patrickpollet.moodlews.core.MessageRecord[] get_messages(int client, java.lang.String sesskey, java.lang.String userid, java.lang.String useridfield)  {
     final String METH_NAME = "get_messages";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
@@ -2121,6 +2141,26 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
       envelope.addProperty("client",client);
       envelope.addProperty("sesskey",sesskey);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     Integer response = (Integer) envelope.getResponse();
+	  this.logInfo(METH_NAME, response);
+      return response.intValue();
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return 0;
+        }
+   }
+    public int get_primaryrole_incourse(int client, java.lang.String sesskey, java.lang.String userid, java.lang.String useridfield, java.lang.String courseid, java.lang.String courseidfield)  {
+    final String METH_NAME = "get_primaryrole_incourse";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+      envelope.addProperty("client",client);
+      envelope.addProperty("sesskey",sesskey);
+      envelope.addProperty("userid",userid);
+      envelope.addProperty("useridfield",useridfield);
+      envelope.addProperty("courseid",courseid);
+      envelope.addProperty("courseidfield",courseidfield);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
        httpTransport.call(METH_NAME, envelope);
@@ -2457,6 +2497,27 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
     } catch (Exception e) {
              this.logError(httpTransport, e);
            return null;
+        }
+   }
+    public boolean has_role_incourse(int client, java.lang.String sesskey, java.lang.String userid, java.lang.String useridfield, java.lang.String courseid, java.lang.String courseidfield, int roleid)  {
+    final String METH_NAME = "has_role_incourse";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+      envelope.addProperty("client",client);
+      envelope.addProperty("sesskey",sesskey);
+      envelope.addProperty("userid",userid);
+      envelope.addProperty("useridfield",useridfield);
+      envelope.addProperty("courseid",courseid);
+      envelope.addProperty("courseidfield",courseidfield);
+      envelope.addProperty("roleid",roleid);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     Boolean response = (Boolean) envelope.getResponse();
+	  this.logInfo(METH_NAME, response);
+      return response.booleanValue();
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return false;
         }
    }
     public net.patrickpollet.moodlews.core.LoginReturn login(java.lang.String username, java.lang.String password)  {
