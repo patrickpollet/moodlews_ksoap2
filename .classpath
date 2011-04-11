@@ -5,7 +5,7 @@
 	<classpathentry kind="lib" path="lib/commons-discovery-0.2.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/jaxrpc.jar"/>
-	<classpathentry kind="lib" path="lib/ksoap2-android-assembly-2.5.2-jar-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="lib/ksoap2-android-assembly-2.5.2-jar-with-dependencies.jar" sourcepath="/home/ppollet/workspace/ksoap2_patch_wsdl/src"/>
 	<classpathentry kind="lib" path="lib/wsdl4j-1.5.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>

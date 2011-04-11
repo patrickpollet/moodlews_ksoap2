@@ -2191,6 +2191,24 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
+    public net.patrickpollet.moodlews.core.FileRecord get_resourcefile_byid(int client, java.lang.String sesskey, int resourceid)  {
+    final String METH_NAME = "get_resourcefile_byid";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+      envelope.addProperty("client",client);
+      envelope.addProperty("sesskey",sesskey);
+      envelope.addProperty("resourceid",resourceid);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     SoapObject resultsRequestSOAP = (SoapObject) envelope.bodyIn;
+      SoapObject response = (SoapObject) resultsRequestSOAP.getProperty(0);
+	  this.logInfo(METH_NAME, response);
+      return (FileRecord)KSoap2Utils.getObject(response,new FileRecord(this.NAMESPACE));
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return null;
+        }
+   }
     public net.patrickpollet.moodlews.core.ResourceRecord[] get_resources(int client, java.lang.String sesskey, java.lang.String[] courseids, java.lang.String idfield)  {
     final String METH_NAME = "get_resources";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);

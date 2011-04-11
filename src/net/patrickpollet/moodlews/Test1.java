@@ -9,14 +9,16 @@ import net.patrickpollet.moodlews.core.*;
 
 public class Test1 {
 	// WE now use the simplified WSDL that is now generated from the server's
-	// php
-	// classes !!!
+	// php classes !!!
 	// instead of the one created by hand ...
 	// major difference is that integer type are now mapped to java int and not
 	// Integer
 	// and in the case of returned arrays there is no need to extract first a
 	// property xxxReturn
 	// the array is right now available
+	
+	
+
 	
 	
 	//DO NOT CHANGE we are talking to Ws using the NEW simplified WSDL
@@ -42,6 +44,7 @@ public class Test1 {
 					.getSessionkey(), "" + me, null);
 		
 			if (ret != null) {
+			
 				System.out.println(Arrays.toString(ret));
 				String[] coursesIds = new String[ret.length];
 				
@@ -86,8 +89,9 @@ public class Test1 {
 				for (int i=0; i<thems.length;i++)
 					System.out.println(i+" "+thems[i]);
 
-			
+			 
 				// create a new user 
+				
 				UserDatum newU=new UserDatum(moodle.getNAMESPACE());
 				newU.setUsername("inconnu005");
 				newU.setFirstname("inconnu");
@@ -99,6 +103,20 @@ public class Test1 {
 				
 				UserRecord[] res=moodle.add_user(lr.getClient(),lr.getSessionkey(),newU);
 				System.out.println (Arrays.toString(res));
+				
+				UserDatum[] users2= new UserDatum[10];
+				for (int i=0; i<10; i++) {
+					users2[i]=new UserDatum(moodle.getNAMESPACE());
+					users2[i].setId(i);
+					users2[i].setAction("get");
+				}
+				UserRecord[] users3=moodle.edit_users(lr.getClient(), lr.getSessionkey(), users2);
+				for (UserRecord u : users3)
+					System.out.println (u);
+				
+				//System.out.println (Arrays.toString(users3));
+				
+				
 				
 				moodle.logout(lr.getClient(),lr.getSessionkey());
 			} else
