@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 //use the new WSDL 
 import net.patrickpollet.moodlews.core.*;
+
 // definitions of Moodle server, login, password ...
 
 

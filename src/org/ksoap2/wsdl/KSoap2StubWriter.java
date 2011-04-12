@@ -173,11 +173,6 @@ public class KSoap2StubWriter extends JavaStubWriter {
 		
 		writeComment(pw, operation.getDocumentationElement(), true);
 	
-		/*if (operation.getName().startsWith("count")) {
-		System.out.println(operation);
-		System.out.println(parms);
-		}
-		*/
 
 		if (parms.signature == null) {
 			return;
@@ -262,7 +257,7 @@ public class KSoap2StubWriter extends JavaStubWriter {
 			"SoapObject resultsRequestSOAP = (SoapObject) envelope.bodyIn;\n"+
 			"      SoapObject response = (SoapObject) resultsRequestSOAP.getProperty(0);";
 			
-		} else return "???? ";
+		} else return "// a WS method that's returns nothing. Why not ?\n String response=\"void\";\n";
 	}
 	
 	protected String generateReturnValue(BindingOperation operation,
@@ -293,7 +288,7 @@ public class KSoap2StubWriter extends JavaStubWriter {
 				 else	return "return ("+ baseType+")KSoap2Utils.getObject(response,new "+baseType+"(this.NAMESPACE));";
 			}
 		}
-		return "return null;";
+		return "// a WS method that's returns nothing. Why not ?";
 		
 	
 	

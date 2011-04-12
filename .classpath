@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/axis.jar"/>
+	<classpathentry kind="src" path="tests"/>
+	<classpathentry kind="lib" path="lib/axis.jar" sourcepath="/home/ppollet/workspace/apache-axis1-32389b9/src"/>
 	<classpathentry kind="lib" path="lib/commons-discovery-0.2.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/jaxrpc.jar"/>

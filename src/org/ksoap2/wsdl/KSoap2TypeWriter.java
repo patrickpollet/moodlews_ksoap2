@@ -6,10 +6,13 @@ package org.ksoap2.wsdl;
 import java.util.Collections;
 import java.util.Vector;
 
+import org.apache.axis.wsdl.gen.Generator;
 import org.apache.axis.wsdl.symbolTable.SymbolTable;
 import org.apache.axis.wsdl.symbolTable.TypeEntry;
 import org.apache.axis.wsdl.toJava.Emitter;
 import org.apache.axis.wsdl.toJava.JavaBeanFaultWriter;
+import org.apache.axis.wsdl.toJava.JavaEnumTypeWriter;
+import org.apache.axis.wsdl.toJava.JavaHolderWriter;
 import org.apache.axis.wsdl.toJava.JavaTypeWriter;
 import org.apache.axis.wsdl.toJava.JavaWriter;
 
@@ -67,6 +70,33 @@ public class KSoap2TypeWriter extends JavaTypeWriter{
                 emitter, type, elements, base, attributes,
                 forException  ?  JavaBeanFaultWriter.RESERVED_PROPERTY_NAMES
                               :  Collections.EMPTY_SET);
+    }
+    
+    
+    /**
+     * getEnumWriter
+     * 
+     * @param emitter 
+     * @param type    
+     * @param v       
+     * @return 
+     */
+    protected JavaWriter getEnumTypeWriter(Emitter emitter, TypeEntry type,
+                                           Vector v) {
+       // return null ; // not yet supported  new JavaEnumTypeWriter(emitter, type, v);
+    	return new KSoap2EnumTypeWriter(emitter, type, v);
+    }
+    
+    /**
+     * getHolderWriter
+     * 
+     * @param emitter 
+     * @param type    
+     * @return 
+     */
+    protected Generator getHolderWriter(Emitter emitter, TypeEntry type) {
+       // return null; // not yet supported new JavaHolderWriter(emitter, type);
+        return new KSoap2HolderWriter(emitter, type);
     }
 	
 
