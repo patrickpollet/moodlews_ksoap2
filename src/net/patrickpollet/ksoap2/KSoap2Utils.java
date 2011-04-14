@@ -38,11 +38,13 @@ public class KSoap2Utils {
 	 * @return
 	 */
 	public static float getFloat(SoapObject response, String id) {
-		return ((Float) (response.getProperty(id))).floatValue();
+		//return ((Float) (response.getProperty(id))).floatValue();
+		return Float.parseFloat(response.getProperty(id).toString());
 	}
 
 	public static double getDouble(SoapObject response, String id) {
-		return ((Double) (response.getProperty(id))).doubleValue();
+		//return ((Double) (response.getProperty(id))).doubleValue();
+		return Double.parseDouble(response.getProperty(id).toString());
 	}
 
 	/**

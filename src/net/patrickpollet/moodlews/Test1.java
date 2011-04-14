@@ -92,7 +92,7 @@ public class Test1 {
 
 			 
 				// create a new user 
-				
+			
 				UserDatum newU=new UserDatum(moodle.getNAMESPACE());
 				newU.setUsername("inconnu005");
 				newU.setFirstname("inconnu");
@@ -116,10 +116,12 @@ public class Test1 {
 					System.out.println (u);
 				
 				//System.out.println (Arrays.toString(users3));
-				
-				
+			
+				GradeRecord[] grs=moodle.get_course_grades(lr.getClient(), lr.getSessionkey(),"116","id");
+				System.out.println (Arrays.toString(grs));
 				
 				moodle.logout(lr.getClient(),lr.getSessionkey());
+				System.out.println ("bye");
 			} else
 				System.out.println("echec");
 		}
