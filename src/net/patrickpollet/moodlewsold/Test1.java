@@ -3,6 +3,7 @@ package net.patrickpollet.moodlewsold;
 import java.util.Arrays;
 
 //use the old WSDL 
+import net.patrickpollet.moodlews.Constantes;
 import net.patrickpollet.moodlewsold.core.*;
 // definitions of Moodle server, login, password ...
 
@@ -94,6 +95,7 @@ public class Test1 {
 			// this code fails since KSoap2 cannont serialize Lnet.patrickpollet.moodlewsold.core.UserDatum
 			// that is included in the EditUsersInput class 
 			// it works Ok with the new WSDL simply sending an array of UserDatum[]
+			/*
 			UserDatum[] users2= new UserDatum[10];
 			for (int i=0; i<10; i++) {
 				users2[i]=new UserDatum(moodle.getNAMESPACE());
@@ -105,8 +107,12 @@ public class Test1 {
 			UserRecord[] users3=moodle.edit_users(lr.getClient(), lr.getSessionkey(), eui).getUsers();
 			for (UserRecord u : users3)
 				System.out.println (u);
+			*/
+			GradeRecord[] grs=moodle.get_course_grades(lr.getClient(), lr.getSessionkey(),"116","id").getGrades();
+			System.out.println (Arrays.toString(grs));
 		
 			moodle.logout(lr.getClient(),lr.getSessionkey());
+			System.out.println ("bye");
 		}else System.out.println ("echec");
 	}
 
