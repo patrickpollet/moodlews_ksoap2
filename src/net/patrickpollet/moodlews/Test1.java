@@ -120,6 +120,11 @@ public class Test1 {
 				GradeRecord[] grs=moodle.get_course_grades(lr.getClient(), lr.getSessionkey(),"116","id");
 				System.out.println (Arrays.toString(grs));
 				
+				
+				GradeItemRecord[] grs2=moodle.get_module_grades(lr.getClient(), lr.getSessionkey(),98,"quiz",null,"id");
+				System.out.println (Arrays.toString(grs2));
+				
+				
 				moodle.logout(lr.getClient(),lr.getSessionkey());
 				System.out.println ("bye");
 			} else

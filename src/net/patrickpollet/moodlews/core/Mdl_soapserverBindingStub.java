@@ -588,8 +588,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _userids= new SoapObject(this.NAMESPACE,"StringArray");
-      for ( Object o : userids) 
-         _userids.addProperty("item",o);
+     if (userids !=null)      
+         for ( Object o : userids) 
+            _userids.addProperty("item",o);
      envelope.addProperty("userids",_userids);
       envelope.addProperty("useridfield",useridfield);
       envelope.addProperty("cohortid",cohortid);
@@ -614,8 +615,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _userids= new SoapObject(this.NAMESPACE,"StringArray");
-      for ( Object o : userids) 
-         _userids.addProperty("item",o);
+     if (userids !=null)      
+         for ( Object o : userids) 
+            _userids.addProperty("item",o);
      envelope.addProperty("userids",_userids);
       envelope.addProperty("useridfield",useridfield);
       envelope.addProperty("cohortid",cohortid);
@@ -801,8 +803,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _assignments= new SoapObject(this.NAMESPACE,"AssignmentDatumArray");
-      for ( Object o : assignments) 
-         _assignments.addProperty("item",o);
+     if (assignments !=null)      
+         for ( Object o : assignments) 
+            _assignments.addProperty("item",o);
      envelope.addProperty("assignments",_assignments);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -824,8 +827,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _categories= new SoapObject(this.NAMESPACE,"CategoryDatumArray");
-      for ( Object o : categories) 
-         _categories.addProperty("item",o);
+     if (categories !=null)      
+         for ( Object o : categories) 
+            _categories.addProperty("item",o);
      envelope.addProperty("categories",_categories);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -847,8 +851,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _courses= new SoapObject(this.NAMESPACE,"CourseDatumArray");
-      for ( Object o : courses) 
-         _courses.addProperty("item",o);
+     if (courses !=null)      
+         for ( Object o : courses) 
+            _courses.addProperty("item",o);
      envelope.addProperty("courses",_courses);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -870,8 +875,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _databases= new SoapObject(this.NAMESPACE,"DatabaseDatumArray");
-      for ( Object o : databases) 
-         _databases.addProperty("item",o);
+     if (databases !=null)      
+         for ( Object o : databases) 
+            _databases.addProperty("item",o);
      envelope.addProperty("databases",_databases);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -893,8 +899,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _forums= new SoapObject(this.NAMESPACE,"ForumDatumArray");
-      for ( Object o : forums) 
-         _forums.addProperty("item",o);
+     if (forums !=null)      
+         for ( Object o : forums) 
+            _forums.addProperty("item",o);
      envelope.addProperty("forums",_forums);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -916,8 +923,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _groupings= new SoapObject(this.NAMESPACE,"GroupingDatumArray");
-      for ( Object o : groupings) 
-         _groupings.addProperty("item",o);
+     if (groupings !=null)      
+         for ( Object o : groupings) 
+            _groupings.addProperty("item",o);
      envelope.addProperty("groupings",_groupings);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -939,8 +947,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _groups= new SoapObject(this.NAMESPACE,"GroupDatumArray");
-      for ( Object o : groups) 
-         _groups.addProperty("item",o);
+     if (groups !=null)      
+         for ( Object o : groups) 
+            _groups.addProperty("item",o);
      envelope.addProperty("groups",_groups);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -962,8 +971,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _labels= new SoapObject(this.NAMESPACE,"LabelDatumArray");
-      for ( Object o : labels) 
-         _labels.addProperty("item",o);
+     if (labels !=null)      
+         for ( Object o : labels) 
+            _labels.addProperty("item",o);
      envelope.addProperty("labels",_labels);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -985,8 +995,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _pageswiki= new SoapObject(this.NAMESPACE,"PageWikiDatumArray");
-      for ( Object o : pageswiki) 
-         _pageswiki.addProperty("item",o);
+     if (pageswiki !=null)      
+         for ( Object o : pageswiki) 
+            _pageswiki.addProperty("item",o);
      envelope.addProperty("pageswiki",_pageswiki);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -1008,8 +1019,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _sections= new SoapObject(this.NAMESPACE,"SectionDatumArray");
-      for ( Object o : sections) 
-         _sections.addProperty("item",o);
+     if (sections !=null)      
+         for ( Object o : sections) 
+            _sections.addProperty("item",o);
      envelope.addProperty("sections",_sections);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -1031,8 +1043,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _users= new SoapObject(this.NAMESPACE,"UserDatumArray");
-      for ( Object o : users) 
-         _users.addProperty("item",o);
+     if (users !=null)      
+         for ( Object o : users) 
+            _users.addProperty("item",o);
      envelope.addProperty("users",_users);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -1054,8 +1067,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _wikis= new SoapObject(this.NAMESPACE,"WikiDatumArray");
-      for ( Object o : wikis) 
-         _wikis.addProperty("item",o);
+     if (wikis !=null)      
+         for ( Object o : wikis) 
+            _wikis.addProperty("item",o);
      envelope.addProperty("wikis",_wikis);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -1079,8 +1093,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("courseidfield",courseidfield);
      //generate an arraytype SoapObject for input array 
       SoapObject _userids= new SoapObject(this.NAMESPACE,"StringArray");
-      for ( Object o : userids) 
-         _userids.addProperty("item",o);
+     if (userids !=null)      
+         for ( Object o : userids) 
+            _userids.addProperty("item",o);
      envelope.addProperty("userids",_userids);
       envelope.addProperty("idfield",idfield);
     HttpTransportSE httpTransport = this.makeHttpTransport();
@@ -1367,8 +1382,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("assignmentid",assignmentid);
      //generate an arraytype SoapObject for input array 
       SoapObject _userids= new SoapObject(this.NAMESPACE,"StringArray");
-      for ( Object o : userids) 
-         _userids.addProperty("item",o);
+     if (userids !=null)      
+         for ( Object o : userids) 
+            _userids.addProperty("item",o);
      envelope.addProperty("userids",_userids);
       envelope.addProperty("useridfield",useridfield);
       envelope.addProperty("timemodified",timemodified);
@@ -1606,8 +1622,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _courseids= new SoapObject(this.NAMESPACE,"StringArray");
-      for ( Object o : courseids) 
-         _courseids.addProperty("item",o);
+     if (courseids !=null)      
+         for ( Object o : courseids) 
+            _courseids.addProperty("item",o);
      envelope.addProperty("courseids",_courseids);
       envelope.addProperty("idfield",idfield);
     HttpTransportSE httpTransport = this.makeHttpTransport();
@@ -1731,8 +1748,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("useridfield",useridfield);
      //generate an arraytype SoapObject for input array 
       SoapObject _courseids= new SoapObject(this.NAMESPACE,"StringArray");
-      for ( Object o : courseids) 
-         _courseids.addProperty("item",o);
+     if (courseids !=null)      
+         for ( Object o : courseids) 
+            _courseids.addProperty("item",o);
      envelope.addProperty("courseids",_courseids);
       envelope.addProperty("courseidfield",courseidfield);
     HttpTransportSE httpTransport = this.makeHttpTransport();
@@ -1913,8 +1931,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _courseids= new SoapObject(this.NAMESPACE,"StringArray");
-      for ( Object o : courseids) 
-         _courseids.addProperty("item",o);
+     if (courseids !=null)      
+         for ( Object o : courseids) 
+            _courseids.addProperty("item",o);
      envelope.addProperty("courseids",_courseids);
       envelope.addProperty("idfield",idfield);
       envelope.addProperty("type",type);
@@ -2009,6 +2028,52 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
 	  this.logInfo(METH_NAME, response);
       List ret=this.getList(response,new MessageRecord(this.NAMESPACE));
       return (MessageRecord[]) ret.toArray( new MessageRecord[0]);
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return null;
+        }
+   }
+    public net.patrickpollet.moodlews.core.GradeItemRecord[] get_module_grades(int client, java.lang.String sesskey, int activityid, java.lang.String activitytype, java.lang.String[] userids, java.lang.String useridfield)  {
+    final String METH_NAME = "get_module_grades";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+      envelope.addProperty("client",client);
+      envelope.addProperty("sesskey",sesskey);
+      envelope.addProperty("activityid",activityid);
+      envelope.addProperty("activitytype",activitytype);
+     //generate an arraytype SoapObject for input array 
+      SoapObject _userids= new SoapObject(this.NAMESPACE,"StringArray");
+     if (userids !=null)      
+         for ( Object o : userids) 
+            _userids.addProperty("item",o);
+     envelope.addProperty("userids",_userids);
+      envelope.addProperty("useridfield",useridfield);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     SoapObject resultsRequestSOAP = (SoapObject) envelope.bodyIn;
+      SoapObject response = (SoapObject) resultsRequestSOAP.getProperty(0);
+	  this.logInfo(METH_NAME, response);
+      List ret=this.getList(response,new GradeItemRecord(this.NAMESPACE));
+      return (GradeItemRecord[]) ret.toArray( new GradeItemRecord[0]);
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return null;
+        }
+   }
+    public net.patrickpollet.moodlews.core.GradeItemRecord[] get_my_assignment_grade(int client, java.lang.String sesskey, int quizid)  {
+    final String METH_NAME = "get_my_assignment_grade";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+      envelope.addProperty("client",client);
+      envelope.addProperty("sesskey",sesskey);
+      envelope.addProperty("quizid",quizid);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     SoapObject resultsRequestSOAP = (SoapObject) envelope.bodyIn;
+      SoapObject response = (SoapObject) resultsRequestSOAP.getProperty(0);
+	  this.logInfo(METH_NAME, response);
+      List ret=this.getList(response,new GradeItemRecord(this.NAMESPACE));
+      return (GradeItemRecord[]) ret.toArray( new GradeItemRecord[0]);
     } catch (Exception e) {
              this.logError(httpTransport, e);
            return null;
@@ -2152,6 +2217,45 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return 0;
         }
    }
+    public net.patrickpollet.moodlews.core.GradeItemRecord[] get_my_module_grade(int client, java.lang.String sesskey, int activityid, java.lang.String activitytype)  {
+    final String METH_NAME = "get_my_module_grade";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+      envelope.addProperty("client",client);
+      envelope.addProperty("sesskey",sesskey);
+      envelope.addProperty("activityid",activityid);
+      envelope.addProperty("activitytype",activitytype);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     SoapObject resultsRequestSOAP = (SoapObject) envelope.bodyIn;
+      SoapObject response = (SoapObject) resultsRequestSOAP.getProperty(0);
+	  this.logInfo(METH_NAME, response);
+      List ret=this.getList(response,new GradeItemRecord(this.NAMESPACE));
+      return (GradeItemRecord[]) ret.toArray( new GradeItemRecord[0]);
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return null;
+        }
+   }
+    public net.patrickpollet.moodlews.core.GradeItemRecord[] get_my_quiz_grade(int client, java.lang.String sesskey, int quizid)  {
+    final String METH_NAME = "get_my_quiz_grade";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+      envelope.addProperty("client",client);
+      envelope.addProperty("sesskey",sesskey);
+      envelope.addProperty("quizid",quizid);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     SoapObject resultsRequestSOAP = (SoapObject) envelope.bodyIn;
+      SoapObject response = (SoapObject) resultsRequestSOAP.getProperty(0);
+	  this.logInfo(METH_NAME, response);
+      List ret=this.getList(response,new GradeItemRecord(this.NAMESPACE));
+      return (GradeItemRecord[]) ret.toArray( new GradeItemRecord[0]);
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return null;
+        }
+   }
     public int get_primaryrole_incourse(int client, java.lang.String sesskey, java.lang.String userid, java.lang.String useridfield, java.lang.String courseid, java.lang.String courseidfield)  {
     final String METH_NAME = "get_primaryrole_incourse";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
@@ -2216,8 +2320,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _courseids= new SoapObject(this.NAMESPACE,"StringArray");
-      for ( Object o : courseids) 
-         _courseids.addProperty("item",o);
+     if (courseids !=null)      
+         for ( Object o : courseids) 
+            _courseids.addProperty("item",o);
      envelope.addProperty("courseids",_courseids);
       envelope.addProperty("idfield",idfield);
     HttpTransportSE httpTransport = this.makeHttpTransport();
@@ -2298,8 +2403,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _courseids= new SoapObject(this.NAMESPACE,"StringArray");
-      for ( Object o : courseids) 
-         _courseids.addProperty("item",o);
+     if (courseids !=null)      
+         for ( Object o : courseids) 
+            _courseids.addProperty("item",o);
      envelope.addProperty("courseids",_courseids);
       envelope.addProperty("idfield",idfield);
     HttpTransportSE httpTransport = this.makeHttpTransport();
@@ -2459,8 +2565,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _userids= new SoapObject(this.NAMESPACE,"StringArray");
-      for ( Object o : userids) 
-         _userids.addProperty("item",o);
+     if (userids !=null)      
+         for ( Object o : userids) 
+            _userids.addProperty("item",o);
      envelope.addProperty("userids",_userids);
       envelope.addProperty("idfield",idfield);
     HttpTransportSE httpTransport = this.makeHttpTransport();
@@ -2738,8 +2845,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _userids= new SoapObject(this.NAMESPACE,"StringArray");
-      for ( Object o : userids) 
-         _userids.addProperty("item",o);
+     if (userids !=null)      
+         for ( Object o : userids) 
+            _userids.addProperty("item",o);
      envelope.addProperty("userids",_userids);
       envelope.addProperty("useridfield",useridfield);
       envelope.addProperty("cohortid",cohortid);
@@ -2764,8 +2872,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("sesskey",sesskey);
      //generate an arraytype SoapObject for input array 
       SoapObject _userids= new SoapObject(this.NAMESPACE,"StringArray");
-      for ( Object o : userids) 
-         _userids.addProperty("item",o);
+     if (userids !=null)      
+         for ( Object o : userids) 
+            _userids.addProperty("item",o);
      envelope.addProperty("userids",_userids);
       envelope.addProperty("useridfield",useridfield);
       envelope.addProperty("cohortid",cohortid);
@@ -2792,8 +2901,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("useridfield",useridfield);
      //generate an arraytype SoapObject for input array 
       SoapObject _values= new SoapObject(this.NAMESPACE,"ProfileitemRecordArray");
-      for ( Object o : values) 
-         _values.addProperty("item",o);
+     if (values !=null)      
+         for ( Object o : values) 
+            _values.addProperty("item",o);
      envelope.addProperty("values",_values);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -2817,8 +2927,9 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("courseidfield",courseidfield);
      //generate an arraytype SoapObject for input array 
       SoapObject _userids= new SoapObject(this.NAMESPACE,"StringArray");
-      for ( Object o : userids) 
-         _userids.addProperty("item",o);
+     if (userids !=null)      
+         for ( Object o : userids) 
+            _userids.addProperty("item",o);
      envelope.addProperty("userids",_userids);
       envelope.addProperty("idfield",idfield);
     HttpTransportSE httpTransport = this.makeHttpTransport();
