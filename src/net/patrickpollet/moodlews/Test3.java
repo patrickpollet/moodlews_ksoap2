@@ -19,12 +19,7 @@ public class Test3 {
 	// the array is right now available
 	
 	
-class Constantes {
-	public static final String MOODLE_URL = "http://localhost/moodle.195/";
-	public  static final String LOGIN = "astrid";
-	public static final String PWD = "bpitt1";
-	public static final boolean WS_DEBUG = false;
-}
+
 	
 	
 	//DO NOT CHANGE we are talking to Ws using the NEW simplified WSDL
