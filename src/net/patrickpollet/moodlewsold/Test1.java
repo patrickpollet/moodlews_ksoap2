@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 //use the old WSDL 
 import net.patrickpollet.moodlews.Constantes;
+
 import net.patrickpollet.moodlewsold.core.*;
 // definitions of Moodle server, login, password ...
 
@@ -110,6 +111,17 @@ public class Test1 {
 			*/
 			GradeRecord[] grs=moodle.get_course_grades(lr.getClient(), lr.getSessionkey(),"116","id").getGrades();
 			System.out.println (Arrays.toString(grs));
+			
+		
+			GradeItemRecord[] grs2=moodle.get_module_grades(lr.getClient(), lr.getSessionkey(),98,"quiz",null,"id").getGrades();
+			System.out.println (Arrays.toString(grs2));
+			
+			
+			ForumDiscussionRecord[] frd=moodle.get_forum_discussions(lr.getClient(), lr.getSessionkey(),93,5).getForumDiscussions();
+			System.out.println (Arrays.toString(frd));
+			
+			
+			
 		
 			moodle.logout(lr.getClient(),lr.getSessionkey());
 			System.out.println ("bye");

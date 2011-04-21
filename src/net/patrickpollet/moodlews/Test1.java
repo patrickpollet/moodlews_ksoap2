@@ -125,6 +125,10 @@ public class Test1 {
 				System.out.println (Arrays.toString(grs2));
 				
 				
+				ForumDiscussionRecord[] frd=moodle.get_forum_discussions(lr.getClient(), lr.getSessionkey(),93,5);
+				System.out.println (Arrays.toString(frd));
+				
+				
 				moodle.logout(lr.getClient(),lr.getSessionkey());
 				System.out.println ("bye");
 			} else

@@ -2,3 +2,5 @@
 bin/
 #do not commit MY connexion data
 Constantes.java
+#my construction scripts
+*.sh

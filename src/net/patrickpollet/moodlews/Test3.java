@@ -53,7 +53,8 @@ class Constantes {
 			float[] ret2=moodle.get_float_array(10);
 			System.out.println(Arrays.toString(ret2));
 			
-		//	double[] ret4=moodle.get_double_array(10.0);
+		// cannot be tested sinc PHp written MoodleWs dose not known the double type 
+	    //	double[] ret4=moodle.get_double_array(10.0);
 		//	System.out.println(Arrays.toString(ret3));
 			
 			

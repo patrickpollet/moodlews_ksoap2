@@ -50,7 +50,7 @@ public class KSoap2StubWriter extends JavaStubWriter {
     protected void writeHeaderComments(PrintWriter pw) throws IOException {
        super.writeHeaderComments(pw);
         pw.println("/**");
-        pw.println(" * Modified for KSoap2 library by pp@patrickpollet.net");
+        pw.println(" * Modified for KSoap2 library by pp@patrickpollet.net using KSoap2StubWriter");
         pw.println(" */");
         pw.println();
     }    // writeHeaderComments
@@ -275,24 +275,46 @@ public class KSoap2StubWriter extends JavaStubWriter {
 			else if (KSoap2Utils.isArrayType(typeName)) {
 				if (fault) return "return null;";
 				else {
-				   String baseType=KSoap2Utils.getBaseType(typeName);
-					
-					return 
-					"List ret=this.getList(response,new "+baseType+"(this.NAMESPACE));\n"+
-					"      return ("+baseType+"[]) ret.toArray( new "+baseType+"[0]);";
+					String baseType=KSoap2Utils.getBaseType(typeName);
+
+					if (KSoap2Utils.isPrimitiveType(baseType)) {  // array of primitive type
+						
+						String wrapperClass=KSoap2Utils.getWrapperClassName(baseType);
+						//return "       return null;"; 
+						return "       return KSoap2Utils.get"+wrapperClass+"Array(response);";
+					}
+					else if (KSoap2Utils.isStringType(baseType)) {  // array of String
+						 return "      return KSoap2Utils.getStringArray(response);";
+						
+					}	
+
+					else {
+
+						return 
+						"List ret=this.getList(response,new "+baseType+"(this.NAMESPACE));\n"+
+						"      return ("+baseType+"[]) ret.toArray( new "+baseType+"[0]);";
+					}
 				}
 			}
-			else { //object 
-				  //return (ExamenRecordV2)KSoap2Utils.getObject(response, new ExamenRecordV2());
-				 String baseType=KSoap2Utils.getBaseType(typeName);
-				 if (fault) return "return null;";
-				 else	return "return ("+ baseType+")KSoap2Utils.getObject(response,new "+baseType+"(this.NAMESPACE));";
+			/***  enum types are now Soapeabilisable
+			else if (KSoap2Utils.isEnumType(typeName)) {
+				//return " // typeName est enum";
+				// must emit something like this calling the static factory of that class from a string 
+				//   return StatisticStateType.fromString(response.toString());
+				return " return "+typeName+ ".fromString(response.toString());";
+			}
+			****/ 
+			else { //object that MUST be Soapeabilisable
+				//return (ExamenRecordV2)KSoap2Utils.getObject(response, new ExamenRecordV2());
+				String baseType=KSoap2Utils.getBaseType(typeName);
+				if (fault) return "return null;";
+				else	return "return ("+ baseType+")KSoap2Utils.getObject(response,new "+baseType+"(this.NAMESPACE));";
 			}
 		}
 		return "// a WS method that's returns nothing. Why not ?";
-		
-	
-	
+
+
+
 	}
 
 }

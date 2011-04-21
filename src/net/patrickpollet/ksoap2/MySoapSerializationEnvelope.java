@@ -3,6 +3,8 @@ package net.patrickpollet.ksoap2;
 import net.patrickpollet.moodlews.core.LoginReturn;
 
 import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.MarshalFloat;
+import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 
@@ -53,6 +55,7 @@ public class MySoapSerializationEnvelope extends SoapSerializationEnvelope {
 			this.request.addProperty("client", client);
 			this.request.addProperty("sesskey", sesskey);
 		}
+		this.registerMyTypes();
 	}
 
 	/**
@@ -63,6 +66,17 @@ public class MySoapSerializationEnvelope extends SoapSerializationEnvelope {
 	 */
 	public void addProperty(String name, Object value) {
 		this.request.addProperty(name, value);
+	}
+	
+	
+	/**
+	 * add serialization of primitive types not set by default in KSoap2_android 
+	 */
+	protected void registerMyTypes () {
+		new MarshalDouble().register(this);
+		new MarshalFloat().register(this);
+		new MarshalInteger().register(this);
+		
 	}
 
 }

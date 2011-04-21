@@ -4,10 +4,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
 
+import net.patrickpollet.ksoap2.Soapeabilisable;
+
 import org.apache.axis.utils.Messages;
 import org.apache.axis.wsdl.symbolTable.TypeEntry;
 import org.apache.axis.wsdl.toJava.Emitter;
 import org.apache.axis.wsdl.toJava.JavaEnumTypeWriter;
+import org.ksoap2.serialization.SoapObject;
+
+import enums.ObjectType;
 
 
 public class KSoap2EnumTypeWriter extends JavaEnumTypeWriter {
@@ -46,7 +51,7 @@ public class KSoap2EnumTypeWriter extends JavaEnumTypeWriter {
     protected void writeHeaderComments(PrintWriter pw) throws IOException {
        super.writeHeaderComments(pw);
         pw.println("/**");
-        pw.println(" * Modified for KSoap2 library by pp@patrickpollet.net");
+        pw.println(" * Modified for KSoap2 library by pp@patrickpollet.net  using KSoap2EnumTypeWriter");
         pw.println(" */");
         pw.println();
     }    // writeHeaderComments
@@ -77,8 +82,8 @@ public class KSoap2EnumTypeWriter extends JavaEnumTypeWriter {
      * @return " implements <classes> "
      */
     protected String getImplementsText() {
-    	//return " implements Soapeabilisable";
-    	return "";
+    	return " implements Soapeabilisable";
+    	// return "";
     }
     
     
@@ -91,6 +96,7 @@ public class KSoap2EnumTypeWriter extends JavaEnumTypeWriter {
     protected void writePackage(PrintWriter pw) throws IOException {
 
         super.writePackage(pw);
+        
         pw.println();
         pw.println("import java.util.Arrays;");
         pw.println("import java.util.List;");
@@ -98,7 +104,8 @@ public class KSoap2EnumTypeWriter extends JavaEnumTypeWriter {
         pw.println("import net.patrickpollet.ksoap2.Soapeabilisable;");
         pw.println("import org.ksoap2.serialization.SoapObject;");
         pw.println();
-        System.out.println ("processing "+getClassName());
+        
+       // System.out.println ("processing "+getClassName());
     }    // writePackage
     
     /**
@@ -323,6 +330,13 @@ public class KSoap2EnumTypeWriter extends JavaEnumTypeWriter {
         }
      
         pw.println();
+        
+        // enum typas are Soapeabilisable 
+        pw.println ("    public Soapeabilisable fromSoapResponse(SoapObject response) {");
+        pw.printf("          return %s.fromValue(response.toString());",javaName);
+        pw.println ("    }");
+        
+        
     }    // writeFileBody
 
 }

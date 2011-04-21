@@ -6,7 +6,7 @@
  */
 
 /**
- * Modified for KSoap2 library by pp@patrickpollet.net
+ * Modified for KSoap2 library by pp@patrickpollet.net using KSoap2StubWriter
  */
 
 package net.patrickpollet.moodlews.core;
@@ -1402,6 +1402,21 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
+    public boolean[] get_boolean_array()  {
+    final String METH_NAME = "get_boolean_array";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     SoapObject resultsRequestSOAP = (SoapObject) envelope.bodyIn;
+      SoapObject response = (SoapObject) resultsRequestSOAP.getProperty(0);
+	  this.logInfo(METH_NAME, response);
+             return KSoap2Utils.getBooleanArray(response);
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return null;
+        }
+   }
     public net.patrickpollet.moodlews.core.CategoryRecord[] get_categories(int client, java.lang.String sesskey, java.lang.String catid, java.lang.String idfield)  {
     final String METH_NAME = "get_categories";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
@@ -1699,6 +1714,22 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
+    public float[] get_float_array(float n)  {
+    final String METH_NAME = "get_float_array";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+      envelope.addProperty("n",n);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     SoapObject resultsRequestSOAP = (SoapObject) envelope.bodyIn;
+      SoapObject response = (SoapObject) resultsRequestSOAP.getProperty(0);
+	  this.logInfo(METH_NAME, response);
+             return KSoap2Utils.getFloatArray(response);
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return null;
+        }
+   }
     public net.patrickpollet.moodlews.core.ForumDiscussionRecord[] get_forum_discussions(int client, java.lang.String sesskey, int forumid, int limit)  {
     final String METH_NAME = "get_forum_discussions";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
@@ -1950,6 +1981,22 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
+    public int[] get_int_array(int n)  {
+    final String METH_NAME = "get_int_array";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+      envelope.addProperty("n",n);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     SoapObject resultsRequestSOAP = (SoapObject) envelope.bodyIn;
+      SoapObject response = (SoapObject) resultsRequestSOAP.getProperty(0);
+	  this.logInfo(METH_NAME, response);
+             return KSoap2Utils.getIntegerArray(response);
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return null;
+        }
+   }
     public net.patrickpollet.moodlews.core.ChangeRecord[] get_last_changes(int client, java.lang.String sesskey, java.lang.String courseid, java.lang.String courseidfield, int limit)  {
     final String METH_NAME = "get_last_changes";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
@@ -2060,12 +2107,12 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
-    public net.patrickpollet.moodlews.core.GradeItemRecord[] get_my_assignment_grade(int client, java.lang.String sesskey, int quizid)  {
+    public net.patrickpollet.moodlews.core.GradeItemRecord[] get_my_assignment_grade(int client, java.lang.String sesskey, int assignmentid)  {
     final String METH_NAME = "get_my_assignment_grade";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
       envelope.addProperty("client",client);
       envelope.addProperty("sesskey",sesskey);
-      envelope.addProperty("quizid",quizid);
+      envelope.addProperty("assignmentid",assignmentid);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
        httpTransport.call(METH_NAME, envelope);
@@ -2416,6 +2463,21 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
 	  this.logInfo(METH_NAME, response);
       List ret=this.getList(response,new SectionRecord(this.NAMESPACE));
       return (SectionRecord[]) ret.toArray( new SectionRecord[0]);
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return null;
+        }
+   }
+    public java.lang.String[] get_string_array()  {
+    final String METH_NAME = "get_string_array";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     SoapObject resultsRequestSOAP = (SoapObject) envelope.bodyIn;
+      SoapObject response = (SoapObject) resultsRequestSOAP.getProperty(0);
+	  this.logInfo(METH_NAME, response);
+            return KSoap2Utils.getStringArray(response);
     } catch (Exception e) {
              this.logError(httpTransport, e);
            return null;

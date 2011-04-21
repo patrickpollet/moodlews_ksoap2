@@ -6,7 +6,7 @@
  */
 
 /**
- * Modified for KSoap2 library by pp@patrickpollet.net
+ * Modified for KSoap2 library by pp@patrickpollet.net using KSoap2BeanWriter
  */
 
 package net.patrickpollet.moodlews.core;
@@ -64,6 +64,8 @@ public class ForumDiscussionRecord  extends SoapObject  implements Soapeabilisab
       ret.setGroupid(KSoap2Utils.getInt(response,"groupid") );
       ret.setId(KSoap2Utils.getInt(response,"id") );
       ret.setName(KSoap2Utils.getString(response,"name") );
+       net.patrickpollet.moodlews.core.ForumPostRecord _post= (net.patrickpollet.moodlews.core.ForumPostRecord) (KSoap2Utils.getObject((SoapObject) response.getProperty("post"), new net.patrickpollet.moodlews.core.ForumPostRecord(this.namespace)));
+       ret.setPost(_post);
       ret.setTimeend(KSoap2Utils.getInt(response,"timeend") );
       ret.setTimemodified(KSoap2Utils.getInt(response,"timemodified") );
       ret.setTimestart(KSoap2Utils.getInt(response,"timestart") );

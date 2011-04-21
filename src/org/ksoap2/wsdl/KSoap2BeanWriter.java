@@ -5,12 +5,14 @@ import java.io.PrintWriter;
 import java.util.Vector;
 
 import net.patrickpollet.ksoap2.KSoap2Utils;
+import net.patrickpollet.moodlewsold.core.ForumPostRecord;
 
 import org.apache.axis.wsdl.symbolTable.TypeEntry;
 import org.apache.axis.wsdl.toJava.Emitter;
 import org.apache.axis.wsdl.toJava.JavaBeanWriter;
 import org.apache.axis.wsdl.toJava.JavaWriter;
 import org.apache.axis.wsdl.toJava.Utils;
+import org.ksoap2.serialization.SoapObject;
 import org.w3c.dom.DOMException;
 
 public class KSoap2BeanWriter extends JavaBeanWriter{
@@ -78,7 +80,7 @@ public class KSoap2BeanWriter extends JavaBeanWriter{
     protected void writeHeaderComments(PrintWriter pw) throws IOException {
        super.writeHeaderComments(pw);
         pw.println("/**");
-        pw.println(" * Modified for KSoap2 library by pp@patrickpollet.net");
+        pw.println(" * Modified for KSoap2 library by pp@patrickpollet.net using KSoap2BeanWriter");
         pw.println(" */");
         pw.println();
     }    // writeHeaderComments
@@ -180,33 +182,93 @@ public class KSoap2BeanWriter extends JavaBeanWriter{
        pw.println("      "+className+ " ret = new "+ className+"(this.namespace);");
         
 
-        for (int i = 0; i < names.size(); i += 2) {
-            String typeName = (String) names.get(i);
-            String name = (String) names.get(i + 1);
-            String capName = Utils.capitalizeFirstChar(name);
-           // pw.println(typeName+" "+name+" "+capName);
-            String get=""; 
-            if (KSoap2Utils.isPrimitiveType(typeName)) {
-               get="get"+ Utils.capitalizeFirstChar(typeName)+ "(response,"+"\""+name +"\")";
-               pw.println("      ret.set"+capName+"(KSoap2Utils."+get+" );");
-            }
-            else if (KSoap2Utils.isStringType(typeName)) {
-            	get="getString(response,"+"\""+name +"\")";
-            	pw.println("      ret.set"+capName+"(KSoap2Utils."+get+" );");
-            }	 
-            else if (KSoap2Utils.isArrayType(typeName)) {
-            	String baseType=KSoap2Utils.getBaseType(typeName);
-            	/*
-            	 * must emit that chunk of code 
+       for (int i = 0; i < names.size(); i += 2) {
+    	   String typeName = (String) names.get(i);
+    	   String name = (String) names.get(i + 1);
+    	   String capName = Utils.capitalizeFirstChar(name);
+    	  // System.out.println("====>"+typeName+" "+name+" "+capName);
+    	   String get=""; 
+    	   if (KSoap2Utils.isPrimitiveType(typeName)) {
+    		   // emit something like  ret.setDate(KSoap2Utils.getLong(response,"date") );
+    		   get="get"+ Utils.capitalizeFirstChar(typeName)+ "(response,"+"\""+name +"\")";
+    		   pw.println("      ret.set"+capName+"(KSoap2Utils."+get+" );");
+    	   }
+    	   else if (KSoap2Utils.isStringType(typeName)) {
+    		   // emit something like  ret.setCategory(KSoap2Utils.getString(response,"category") ); 
+    		   get="getString(response,"+"\""+name +"\")";
+    		   pw.println("      ret.set"+capName+"(KSoap2Utils."+get+" );");
+    	   }	
+    	   
+    	   else if (KSoap2Utils.isWrapperType(typeName)) {  
+    		   // in some WSDL xsd:int is associated with minoccurs,maxoccurs, thus forcing Axis to convert it the Integer or BigInteger 
+    		   pw.printf ("   // wrapper %s\n",typeName);
+    		   //emit   ret.setTimeout((Integer) response.getProperty("timeout"));
+    		   pw.printf("       ret.set%s((%s) response.getProperty(\"%s\"));\n",capName,typeName,name );
+    	   }
+    	   
+    	   
+    	   else if (KSoap2Utils.isArrayType(typeName)) {
+    		   
+    		   String baseType=KSoap2Utils.getBaseType(typeName);
+    		   System.out.println ("baseType de "+typeName+ " est "+baseType);
+
+    		   if (KSoap2Utils.isPrimitiveType(baseType)) {  // array of primitive type
+    			   //emit something like
+    			   //int[] _mainActions =KSoap2Utils.getIntegerArray((SoapObject) response.getProperty("mainActions"));
+    			   //ret.setMainActions(_mainActions);
+    			   String wrapperClass=KSoap2Utils.getWrapperClassName(baseType);
+    			   pw.printf("       %s[] _%s =KSoap2Utils.get%sArray((SoapObject) response.getProperty(\"%s\"));\n",baseType,name,wrapperClass,name);
+    			   pw.printf("       ret.set%s(_%s);\n",capName,name);
+    			   
+    		   }
+    		   else if (KSoap2Utils.isStringType(baseType)) {  // array of String
+    			   //emit something like
+    			   //String[] _mainActions =KSoap2Utils.getStringArray((SoapObject) response.getProperty("mainActions"));
+    			   //ret.setMainActions(_mainActions);
+    			   pw.printf("       String[] _%s =KSoap2Utils.getStringArray((SoapObject) response.getProperty(\"%s\"));\n",name,name);
+    			   pw.printf("       ret.set%s(_%s);\n",capName,name);
+    		   }
+    		   /*****
+    		   else if (KSoap2Utils.isEnumType(baseType)) {
+   				pw.printf ("       // %s is an array enumType %s   not yet implemented \n",typeName,baseType);				
+   				pw.printf("       ret.set%s(null);\n",capName);		
+   			   }
+   			   ******/
+    		   
+    		   else { // array of Complex Types  MUST be Soapeablisable   TODO enums
+    			   /*
+    			    * must emit that chunk of code 
             	   List _profile =KSoap2Utils.getList((SoapObject) response.getProperty("profile"),new ProfileitemRecord(this.namespace));
             	   ret.setProfile((ProfileitemRecord[]) _profile.toArray(new ProfileitemRecord[0]));
-            	  */
-            	pw.printf("      List _%s =KSoap2Utils.getList((SoapObject) response.getProperty(\"%s\"),new %s(this.namespace));\n",name,name,baseType);
-            	pw.printf("      ret.set%s((%s[]) _%s.toArray(new %s[0]));\n",capName,baseType,name,baseType);
-            	//get="getObject(response,new"+;
-            }	
-           	
-            else continue ; // case of returned array not soved yet get="getObject";
+    			    */
+    			   pw.printf("      List _%s =KSoap2Utils.getList((SoapObject) response.getProperty(\"%s\"),new %s(this.namespace));\n",name,name,baseType);
+    			   pw.printf("      ret.set%s((%s[]) _%s.toArray(new %s[0]));\n",capName,baseType,name,baseType);
+    		   }
+    		   //get="getObject(response,new"+;
+    	   }
+    	   /***
+    	   else if (KSoap2Utils.isEnumType(typeName)) {
+				pw.printf ("       //%s is an enumType\n",typeName);
+				// must emit something like this calling the static factory of that class from a string 
+				//   ret.setType(StatisticStateType.fromString(KSoap2Utils.getString(response,"type")));
+				pw.printf("       ret.set%s(%s.fromString(KSoap2Utils.getString(response,\"%s\")));\n",capName,typeName,name);
+				
+			}
+    	    ****/
+
+    	   else {  // case of returned single object of some complextype must be Soapeabilisable 
+    		   // TODO use getObject 
+    		   //pw.printf("    // déserialisation of %s not yet implemented \n",typeName);
+    		   //pw.print("??????\n");
+    		   
+    		   //should emit something like
+    		   //ForumPostRecord _post= (ForumPostRecord) (KSoap2Utils.getObject((SoapObject) response.getProperty("post"), new ForumPostRecord(this.namespace)));
+    		   //ret.setPost(_post);
+    		   pw.printf("       %s _%s= (%s) (KSoap2Utils.getObject((SoapObject) response.getProperty(\"%s\"), new %s(this.namespace)));\n", typeName,name,typeName,name,typeName);
+    		   pw.printf("       ret.set%s(_%s);\n",capName,name);
+    		   
+    		   //continue ; 
+    	   }
             
             
         }    

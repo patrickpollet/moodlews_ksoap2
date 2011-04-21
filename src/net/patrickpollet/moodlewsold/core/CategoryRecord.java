@@ -6,7 +6,7 @@
  */
 
 /**
- * Modified for KSoap2 library by pp@patrickpollet.net
+ * Modified for KSoap2 library by pp@patrickpollet.net using KSoap2BeanWriter
  */
 
 package net.patrickpollet.moodlewsold.core;
