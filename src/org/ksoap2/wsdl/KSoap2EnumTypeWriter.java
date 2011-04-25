@@ -12,7 +12,7 @@ import org.apache.axis.wsdl.toJava.Emitter;
 import org.apache.axis.wsdl.toJava.JavaEnumTypeWriter;
 import org.ksoap2.serialization.SoapObject;
 
-import enums.ObjectType;
+//import enums.ObjectType;
 
 
 public class KSoap2EnumTypeWriter extends JavaEnumTypeWriter {
