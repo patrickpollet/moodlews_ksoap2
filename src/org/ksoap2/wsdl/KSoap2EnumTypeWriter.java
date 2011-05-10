@@ -11,6 +11,7 @@ import org.apache.axis.wsdl.toJava.JavaEnumTypeWriter;
 
 
 
+
 public class KSoap2EnumTypeWriter extends JavaEnumTypeWriter {
 	
 	
