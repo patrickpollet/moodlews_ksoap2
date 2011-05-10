@@ -69,7 +69,7 @@ public class UserRecord  extends SoapObject  implements Soapeabilisable{
 
     private java.lang.String lang;
 
-    private int timezone;
+    private java.lang.String timezone;
 
     private int mnethostid;
 
@@ -117,7 +117,7 @@ public class UserRecord  extends SoapObject  implements Soapeabilisable{
       ret.setCity(KSoap2Utils.getString(response,"city") );
       ret.setCountry(KSoap2Utils.getString(response,"country") );
       ret.setLang(KSoap2Utils.getString(response,"lang") );
-      ret.setTimezone(KSoap2Utils.getInt(response,"timezone") );
+      ret.setTimezone(KSoap2Utils.getString(response,"timezone") );
       ret.setMnethostid(KSoap2Utils.getInt(response,"mnethostid") );
       ret.setLastip(KSoap2Utils.getString(response,"lastip") );
       ret.setTheme(KSoap2Utils.getString(response,"theme") );
@@ -660,7 +660,7 @@ public class UserRecord  extends SoapObject  implements Soapeabilisable{
      * 
      * @return timezone
      */
-    public int getTimezone() {
+    public java.lang.String getTimezone() {
         return timezone;
     }
 
@@ -670,7 +670,7 @@ public class UserRecord  extends SoapObject  implements Soapeabilisable{
      * 
      * @param timezone
      */
-    public void setTimezone(int timezone) {
+    public void setTimezone(java.lang.String timezone) {
         this.timezone = timezone;
        this.addProperty("timezone",timezone);
     }

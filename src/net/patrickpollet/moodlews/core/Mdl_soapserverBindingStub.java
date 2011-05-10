@@ -608,7 +608,7 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
-    public net.patrickpollet.moodlews.core.EnrolRecord[] affect_users_to_group(int client, java.lang.String sesskey, java.lang.String[] userids, java.lang.String useridfield, java.lang.String cohortid, java.lang.String cohortidfield)  {
+    public net.patrickpollet.moodlews.core.EnrolRecord[] affect_users_to_group(int client, java.lang.String sesskey, java.lang.String[] userids, java.lang.String useridfield, java.lang.String groupid, java.lang.String groupidfield)  {
     final String METH_NAME = "affect_users_to_group";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
       envelope.addProperty("client",client);
@@ -620,8 +620,8 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
             _userids.addProperty("item",o);
      envelope.addProperty("userids",_userids);
       envelope.addProperty("useridfield",useridfield);
-      envelope.addProperty("cohortid",cohortid);
-      envelope.addProperty("cohortidfield",cohortidfield);
+      envelope.addProperty("groupid",groupid);
+      envelope.addProperty("groupidfield",groupidfield);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
        httpTransport.call(METH_NAME, envelope);
@@ -1131,12 +1131,12 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
-    public net.patrickpollet.moodlews.core.ForumPostRecord[] forum_add_reply(int client, java.lang.String sesskey, int parenttid, net.patrickpollet.moodlews.core.ForumPostDatum post)  {
+    public net.patrickpollet.moodlews.core.ForumPostRecord[] forum_add_reply(int client, java.lang.String sesskey, int parentid, net.patrickpollet.moodlews.core.ForumPostDatum post)  {
     final String METH_NAME = "forum_add_reply";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
       envelope.addProperty("client",client);
       envelope.addProperty("sesskey",sesskey);
-      envelope.addProperty("parenttid",parenttid);
+      envelope.addProperty("parentid",parentid);
       envelope.addProperty("post",post);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -1494,12 +1494,12 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
-    public net.patrickpollet.moodlews.core.CohortRecord[] get_cohort_byidnumber(int client, java.lang.String sesskey, java.lang.String cohortIdNumber)  {
+    public net.patrickpollet.moodlews.core.CohortRecord[] get_cohort_byidnumber(int client, java.lang.String sesskey, java.lang.String cohortidnumber)  {
     final String METH_NAME = "get_cohort_byidnumber";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
       envelope.addProperty("client",client);
       envelope.addProperty("sesskey",sesskey);
-      envelope.addProperty("cohortIdNumber",cohortIdNumber);
+      envelope.addProperty("cohortidnumber",cohortidnumber);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
        httpTransport.call(METH_NAME, envelope);
@@ -1533,12 +1533,12 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
-    public net.patrickpollet.moodlews.core.CohortRecord[] get_cohorts_byname(int client, java.lang.String sesskey, java.lang.String cohortName)  {
+    public net.patrickpollet.moodlews.core.CohortRecord[] get_cohorts_byname(int client, java.lang.String sesskey, java.lang.String cohortname)  {
     final String METH_NAME = "get_cohorts_byname";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
       envelope.addProperty("client",client);
       envelope.addProperty("sesskey",sesskey);
-      envelope.addProperty("cohortName",cohortName);
+      envelope.addProperty("cohortname",cohortname);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
        httpTransport.call(METH_NAME, envelope);
@@ -1693,7 +1693,7 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
-    public net.patrickpollet.moodlews.core.EventRecord[] get_events(int client, java.lang.String sesskey, int eventtype, java.lang.String ownerid, java.lang.String owneridfield)  {
+    public net.patrickpollet.moodlews.core.EventRecord[] get_events(int client, java.lang.String sesskey, int eventtype, java.lang.String ownerid, java.lang.String owneridfield, int datetimefrom)  {
     final String METH_NAME = "get_events";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
       envelope.addProperty("client",client);
@@ -1701,6 +1701,7 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
       envelope.addProperty("eventtype",eventtype);
       envelope.addProperty("ownerid",ownerid);
       envelope.addProperty("owneridfield",owneridfield);
+      envelope.addProperty("datetimefrom",datetimefrom);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
        httpTransport.call(METH_NAME, envelope);
@@ -1997,13 +1998,13 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
-    public net.patrickpollet.moodlews.core.ChangeRecord[] get_last_changes(int client, java.lang.String sesskey, java.lang.String courseid, java.lang.String courseidfield, int limit)  {
+    public net.patrickpollet.moodlews.core.ChangeRecord[] get_last_changes(int client, java.lang.String sesskey, java.lang.String courseid, java.lang.String idfield, int limit)  {
     final String METH_NAME = "get_last_changes";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
       envelope.addProperty("client",client);
       envelope.addProperty("sesskey",sesskey);
       envelope.addProperty("courseid",courseid);
-      envelope.addProperty("courseidfield",courseidfield);
+      envelope.addProperty("idfield",idfield);
       envelope.addProperty("limit",limit);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
@@ -2645,14 +2646,14 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
-    public net.patrickpollet.moodlews.core.UserRecord[] get_users_bycourse(int client, java.lang.String sesskey, java.lang.String idcourse, java.lang.String idfield, int roleid)  {
+    public net.patrickpollet.moodlews.core.UserRecord[] get_users_bycourse(int client, java.lang.String sesskey, java.lang.String idcourse, java.lang.String idfield, int idrole)  {
     final String METH_NAME = "get_users_bycourse";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
       envelope.addProperty("client",client);
       envelope.addProperty("sesskey",sesskey);
       envelope.addProperty("idcourse",idcourse);
       envelope.addProperty("idfield",idfield);
-      envelope.addProperty("roleid",roleid);
+      envelope.addProperty("idrole",idrole);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
        httpTransport.call(METH_NAME, envelope);
@@ -2684,6 +2685,22 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
     } catch (Exception e) {
              this.logError(httpTransport, e);
            return null;
+        }
+   }
+    public int get_version(int client, java.lang.String sesskey)  {
+    final String METH_NAME = "get_version";
+	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
+      envelope.addProperty("client",client);
+      envelope.addProperty("sesskey",sesskey);
+    HttpTransportSE httpTransport = this.makeHttpTransport();
+     try {
+       httpTransport.call(METH_NAME, envelope);
+     Integer response = (Integer) envelope.getResponse();
+	  this.logInfo(METH_NAME, response);
+      return response.intValue();
+    } catch (Exception e) {
+             this.logError(httpTransport, e);
+           return 0;
         }
    }
     public boolean has_role_incourse(int client, java.lang.String sesskey, java.lang.String userid, java.lang.String useridfield, java.lang.String courseid, java.lang.String courseidfield, int roleid)  {
@@ -2927,7 +2944,7 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
-    public net.patrickpollet.moodlews.core.EnrolRecord[] remove_users_from_group(int client, java.lang.String sesskey, java.lang.String[] userids, java.lang.String useridfield, java.lang.String cohortid, java.lang.String cohortidfield)  {
+    public net.patrickpollet.moodlews.core.EnrolRecord[] remove_users_from_group(int client, java.lang.String sesskey, java.lang.String[] userids, java.lang.String useridfield, java.lang.String groupid, java.lang.String groupidfield)  {
     final String METH_NAME = "remove_users_from_group";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
       envelope.addProperty("client",client);
@@ -2939,8 +2956,8 @@ public class Mdl_soapserverBindingStub extends  KSoap2BindingStubBase{
             _userids.addProperty("item",o);
      envelope.addProperty("userids",_userids);
       envelope.addProperty("useridfield",useridfield);
-      envelope.addProperty("cohortid",cohortid);
-      envelope.addProperty("cohortidfield",cohortidfield);
+      envelope.addProperty("groupid",groupid);
+      envelope.addProperty("groupidfield",groupidfield);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
        httpTransport.call(METH_NAME, envelope);

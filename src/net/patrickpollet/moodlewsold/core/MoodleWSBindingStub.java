@@ -381,13 +381,15 @@ public class MoodleWSBindingStub extends  KSoap2BindingStubBase{
            return null;
         }
    }
-    public net.patrickpollet.moodlewsold.core.GetEventsReturn get_events(int client, java.lang.String sesskey, int eventtype, int ownerid)  {
+    public net.patrickpollet.moodlewsold.core.GetEventsReturn get_events(int client, java.lang.String sesskey, int eventtype, java.lang.String ownerid, java.lang.String owneridfield, int datetimefrom)  {
     final String METH_NAME = "get_events";
 	MySoapSerializationEnvelope envelope = this.makeEnvelope(METH_NAME);
       envelope.addProperty("client",client);
       envelope.addProperty("sesskey",sesskey);
       envelope.addProperty("eventtype",eventtype);
       envelope.addProperty("ownerid",ownerid);
+      envelope.addProperty("owneridfield",owneridfield);
+      envelope.addProperty("datetimefrom",datetimefrom);
     HttpTransportSE httpTransport = this.makeHttpTransport();
      try {
        httpTransport.call(METH_NAME, envelope);

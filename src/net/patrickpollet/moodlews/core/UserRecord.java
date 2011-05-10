@@ -77,7 +77,7 @@ public class UserRecord  extends SoapObject  implements Soapeabilisable{
 
     private java.lang.String theme;
 
-    private int timezone;
+    private java.lang.String timezone;
 
     private java.lang.String username;
 
@@ -122,7 +122,7 @@ public class UserRecord  extends SoapObject  implements Soapeabilisable{
       ret.setRole(KSoap2Utils.getInt(response,"role") );
       ret.setSkype(KSoap2Utils.getString(response,"skype") );
       ret.setTheme(KSoap2Utils.getString(response,"theme") );
-      ret.setTimezone(KSoap2Utils.getInt(response,"timezone") );
+      ret.setTimezone(KSoap2Utils.getString(response,"timezone") );
       ret.setUsername(KSoap2Utils.getString(response,"username") );
       ret.setYahoo(KSoap2Utils.getString(response,"yahoo") );
       return ret;
@@ -744,7 +744,7 @@ public class UserRecord  extends SoapObject  implements Soapeabilisable{
      * 
      * @return timezone
      */
-    public int getTimezone() {
+    public java.lang.String getTimezone() {
         return timezone;
     }
 
@@ -754,7 +754,7 @@ public class UserRecord  extends SoapObject  implements Soapeabilisable{
      * 
      * @param timezone
      */
-    public void setTimezone(int timezone) {
+    public void setTimezone(java.lang.String timezone) {
         this.timezone = timezone;
        this.addProperty("timezone",timezone);
     }

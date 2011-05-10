@@ -4,15 +4,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
 
-import net.patrickpollet.ksoap2.Soapeabilisable;
-
 import org.apache.axis.utils.Messages;
 import org.apache.axis.wsdl.symbolTable.TypeEntry;
 import org.apache.axis.wsdl.toJava.Emitter;
 import org.apache.axis.wsdl.toJava.JavaEnumTypeWriter;
-import org.ksoap2.serialization.SoapObject;
 
-import enums.ObjectType;
 
 
 public class KSoap2EnumTypeWriter extends JavaEnumTypeWriter {
