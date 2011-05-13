@@ -1,4 +1,4 @@
-This is a collection of Java classes that allow easy access to OK Tech Moodle Web Service from Java clients using KSoap2 library such as Android but also regular java programs 
+This is a collection of Java classes that allow easy access to OK Tech Moodle Web Service from Java clients using KSoap2 library such as Android but also regular java programs It also contains a KSoap2 generating stub tool (wsdl2ksoap2) based on Appacha Axis 1.4 tool wsdl2java. 
 
 1) Usage :
 ----------
@@ -75,7 +75,8 @@ http://prope.insa-lyon.fr/~ppollet/moodlews/java/ksoap2/moodlews/net/patrickpoll
  
 5) Updating the helper classes :
 ---------------------------------
-In case of evolution of the WSDL emitted by OK Tech WS, you must regenerate your helper classes using the provided 
+In case of evolution of the WSDL emitted by OK Tech WS, you must regenerate the stub and the helper classes using the provided 
+
 WSDL2koap program (see org.ksoap2.wsdl package) which is a modified version of Apache's axis 1.4 WSDL2Java utility modified for KSoap2
 
 to get a revised version with the old WSDL use 
