@@ -27,6 +27,10 @@ public class ResourceRecord  extends SoapObject  implements Soapeabilisable{
 
     private java.lang.String error;
 
+    private int groupingid;
+
+    private int groupmembersonly;
+
     private int groupmode;
 
     private int id;
@@ -66,6 +70,8 @@ public class ResourceRecord  extends SoapObject  implements Soapeabilisable{
       ret.setCourse(KSoap2Utils.getInt(response,"course") );
       ret.setCoursemodule(KSoap2Utils.getInt(response,"coursemodule") );
       ret.setError(KSoap2Utils.getString(response,"error") );
+      ret.setGroupingid(KSoap2Utils.getInt(response,"groupingid") );
+      ret.setGroupmembersonly(KSoap2Utils.getInt(response,"groupmembersonly") );
       ret.setGroupmode(KSoap2Utils.getInt(response,"groupmode") );
       ret.setId(KSoap2Utils.getInt(response,"id") );
       ret.setName(KSoap2Utils.getString(response,"name") );
@@ -165,6 +171,48 @@ public class ResourceRecord  extends SoapObject  implements Soapeabilisable{
     public void setError(java.lang.String error) {
         this.error = error;
        this.addProperty("error",error);
+    }
+
+
+    /**
+     * Gets the groupingid value for this ResourceRecord.
+     * 
+     * @return groupingid
+     */
+    public int getGroupingid() {
+        return groupingid;
+    }
+
+
+    /**
+     * Sets the groupingid value for this ResourceRecord.
+     * 
+     * @param groupingid
+     */
+    public void setGroupingid(int groupingid) {
+        this.groupingid = groupingid;
+       this.addProperty("groupingid",groupingid);
+    }
+
+
+    /**
+     * Gets the groupmembersonly value for this ResourceRecord.
+     * 
+     * @return groupmembersonly
+     */
+    public int getGroupmembersonly() {
+        return groupmembersonly;
+    }
+
+
+    /**
+     * Sets the groupmembersonly value for this ResourceRecord.
+     * 
+     * @param groupmembersonly
+     */
+    public void setGroupmembersonly(int groupmembersonly) {
+        this.groupmembersonly = groupmembersonly;
+       this.addProperty("groupmembersonly",groupmembersonly);
     }
 
 

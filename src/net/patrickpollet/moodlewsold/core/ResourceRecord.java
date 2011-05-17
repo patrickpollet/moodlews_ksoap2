@@ -53,6 +53,10 @@ public class ResourceRecord  extends SoapObject  implements Soapeabilisable{
 
     private java.lang.String timemodified_ut;
 
+    private int groupingid;
+
+    private int groupmembersonly;
+
     public ResourceRecord(String nameSpace) {
         super(nameSpace,"ResourceRecord");
     }
@@ -79,6 +83,8 @@ public class ResourceRecord  extends SoapObject  implements Soapeabilisable{
       ret.setCoursemodule(KSoap2Utils.getInt(response,"coursemodule") );
       ret.setUrl(KSoap2Utils.getString(response,"url") );
       ret.setTimemodified_ut(KSoap2Utils.getString(response,"timemodified_ut") );
+      ret.setGroupingid(KSoap2Utils.getInt(response,"groupingid") );
+      ret.setGroupmembersonly(KSoap2Utils.getInt(response,"groupmembersonly") );
       return ret;
 
     }
@@ -438,6 +444,48 @@ public class ResourceRecord  extends SoapObject  implements Soapeabilisable{
     public void setTimemodified_ut(java.lang.String timemodified_ut) {
         this.timemodified_ut = timemodified_ut;
        this.addProperty("timemodified_ut",timemodified_ut);
+    }
+
+
+    /**
+     * Gets the groupingid value for this ResourceRecord.
+     * 
+     * @return groupingid
+     */
+    public int getGroupingid() {
+        return groupingid;
+    }
+
+
+    /**
+     * Sets the groupingid value for this ResourceRecord.
+     * 
+     * @param groupingid
+     */
+    public void setGroupingid(int groupingid) {
+        this.groupingid = groupingid;
+       this.addProperty("groupingid",groupingid);
+    }
+
+
+    /**
+     * Gets the groupmembersonly value for this ResourceRecord.
+     * 
+     * @return groupmembersonly
+     */
+    public int getGroupmembersonly() {
+        return groupmembersonly;
+    }
+
+
+    /**
+     * Sets the groupmembersonly value for this ResourceRecord.
+     * 
+     * @param groupmembersonly
+     */
+    public void setGroupmembersonly(int groupmembersonly) {
+        this.groupmembersonly = groupmembersonly;
+       this.addProperty("groupmembersonly",groupmembersonly);
     }
 
 }
