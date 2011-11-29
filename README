@@ -81,11 +81,11 @@ WSDL2koap program (see org.ksoap2.wsdl package) which is a modified version of A
 
 to get a revised version with the old WSDL use 
 
-java java org.ksoap2.wsdl.WSDL2ksoap -p net.patrickpollet.moodlewsold.core -o /tmp http://yourmoodle/wspp/wsdl_pp.php
+java org.ksoap2.wsdl.WSDL2ksoap -p net.patrickpollet.moodlewsold.core -o /tmp http://yourmoodle/wspp/wsdl_pp.php
 
 to get a revised version with the new WSDL use 
 
-java java org.ksoap2.wsdl.WSDL2ksoap -p net.patrickpollet.moodlews.core -o /tmp http://yourmoodle/wspp/wsdl_pp2.php
+java  org.ksoap2.wsdl.WSDL2ksoap -p net.patrickpollet.moodlews.core -o /tmp http://yourmoodle/wspp/wsdl_pp2.php
 
 in both cases you MUST have the content of lib/ directory in your classpath so from the directory where your Java IDE is placing the compiled classes (bin in Eclipse)
 you should type 
